@@ -1,0 +1,23 @@
+Q1)Display the last edited file under the current directory. 
+A) ls -lt 
+Q2)Display the current Date in the format Month-date-yy ex(Dec-21-20) 
+A) date +"%b-%d-%y" 
+Reference: https://www.cyberciti.biz/faq/linux-unix-formatting-dates-for-display/ 
+
+Q3) Extract all the data from line number of file 10 to 15 of a file and store the output into a file list.txt and display the same. 
+A) head -15 newextractlines.txt | tail -6 >> list.txt && cat list.txt 
+
+Q4) Find all the mp4 files with size more than 10MB and extract all but the first 4 files. 
+A) file . -name *.mp4 -size +10M | head -4 
+
+Q5) Display all the line in a file that starts with 'hello'. 
+A) grep "^hello" hello_search.txt 
+
+Q6) Display all the line in a file that ends with 'done'. 
+A) grep "done$" hello_search.txt 
+
+Q7) Count the total number of files and folders present in a particular directory. 
+A) ls | wc -l 
+
+Q8) Extract the 1st field of the first 3 lines from a file and store into a file result.txt and display. 
+A) cut -d " " -f 1 Shell/hello_search.txt | head -3 >> result.txt && cat result.txt 
