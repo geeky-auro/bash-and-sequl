@@ -1,0 +1,528 @@
+SQL> desc employee_01
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPLOYEEID                                         NUMBER(38)
+ LNAME                                              VARCHAR2(10)
+ FNAME                                              VARCHAR2(10)
+ POSITIONID                                         NUMBER(38)
+ SUPERVISOR                                         VARCHAR2(20)
+ HIREDATE                                           DATE
+ SALSARY                                            NUMBER(38)
+ COMMISSION                                         FLOAT(126)
+ DEPTID                                             NUMBER(38)
+ QUALID                                             NUMBER(38)
+
+SQL> insert into employee_01 values (1,'MINI','DIBYANSU',100,'AURO','25-DEC-2020',50000,1500,1000,2000);
+
+1 row created.
+
+SQL> insert into employee_01 values (2,'CHARAN','PEELA',100,'AURO','25-DEC-2020',50000,1500,1001,2001);
+
+1 row created.
+
+SQL> insert into employee_01 values (3,'BHISHESH','KUMAR',100,'MINI DIBYANSU','25-JAN-2020',50000,1500,1002,2002);
+
+1 row created.
+
+SQL> insert into employee_01 values (3,'BODHISATTA','BHATACHARJEE',101,'MINI DIBYANSU','25-FEB-2020',60000,1500,1003,2003);
+insert into employee_01 values (3,'BODHISATTA','BHATACHARJEE',101,'MINI DIBYANSU','25-FEB-2020',60000,1500,1003,2003)
+                                               *
+ERROR at line 1:
+ORA-12899: value too large for column "SYSTEM"."EMPLOYEE_01"."FNAME" (actual:
+12, maximum: 10)
+
+
+SQL> insert into employee_01 values (3,'BODHISATTA','BHATA',101,'MINI DIBYANSU','25-FEB-2020',60000,1500,1003,2003);
+
+1 row created.
+
+SQL> insert into employee_01 values(4,'AJIT','BHATA',102,'MINI DIBYANSU','25-JULY-2020',60000,1500,1004,2004);
+
+1 row created.
+
+SQL> insert into employee_01 values(5,'KUMAR','AYUSH',103,'AJIT','25-MARCH-2019',60000,1500,1005,2005);
+
+1 row created.
+
+SQL> SELECT * FROM EMPLOYEE_01;
+
+EMPLOYEEID LNAME      FNAME      POSITIONID SUPERVISOR           HIREDATE
+---------- ---------- ---------- ---------- -------------------- ---------
+   SALSARY COMMISSION     DEPTID     QUALID
+---------- ---------- ---------- ----------
+         1 MINI       DIBYANSU          100 AURO                 25-DEC-20
+     50000       1500       1000       2000
+
+         2 CHARAN     PEELA             100 AURO                 25-DEC-20
+     50000       1500       1001       2001
+
+         3 BHISHESH   KUMAR             100 MINI DIBYANSU        25-JAN-20
+     50000       1500       1002       2002
+
+
+EMPLOYEEID LNAME      FNAME      POSITIONID SUPERVISOR           HIREDATE
+---------- ---------- ---------- ---------- -------------------- ---------
+   SALSARY COMMISSION     DEPTID     QUALID
+---------- ---------- ---------- ----------
+         3 BODHISATTA BHATA             101 MINI DIBYANSU        25-FEB-20
+     60000       1500       1003       2003
+
+         4 AJIT       BHATA             102 MINI DIBYANSU        25-JUL-20
+     60000       1500       1004       2004
+
+         5 KUMAR      AYUSH             103 AJIT                 25-MAR-19
+     60000       1500       1005       2005
+
+
+6 rows selected.
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> CLEARSCREEN
+SP2-0734: unknown command beginning "CLEARSCREE..." - rest of line ignored.
+SQL> DESC SELECT * FROM EMPLOYEE_01;
+Usage: DESCRIBE [schema.]object[@db_link]
+SQL> DESC EMPLOYEE_01
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPLOYEEID                                         NUMBER(38)
+ LNAME                                              VARCHAR2(10)
+ FNAME                                              VARCHAR2(10)
+ POSITIONID                                         NUMBER(38)
+ SUPERVISOR                                         VARCHAR2(20)
+ HIREDATE                                           DATE
+ SALSARY                                            NUMBER(38)
+ COMMISSION                                         FLOAT(126)
+ DEPTID                                             NUMBER(38)
+ QUALID                                             NUMBER(38)
+
+SQL> SELECT * FROM EMPLOYEE_01;
+
+EMPLOYEEID LNAME      FNAME      POSITIONID SUPERVISOR           HIREDATE
+---------- ---------- ---------- ---------- -------------------- ---------
+   SALSARY COMMISSION     DEPTID     QUALID
+---------- ---------- ---------- ----------
+         1 MINI       DIBYANSU          100 AURO                 25-DEC-20
+     50000       1500       1000       2000
+
+         2 CHARAN     PEELA             100 AURO                 25-DEC-20
+     50000       1500       1001       2001
+
+         3 BHISHESH   KUMAR             100 MINI DIBYANSU        25-JAN-20
+     50000       1500       1002       2002
+
+
+EMPLOYEEID LNAME      FNAME      POSITIONID SUPERVISOR           HIREDATE
+---------- ---------- ---------- ---------- -------------------- ---------
+   SALSARY COMMISSION     DEPTID     QUALID
+---------- ---------- ---------- ----------
+         3 BODHISATTA BHATA             101 MINI DIBYANSU        25-FEB-20
+     60000       1500       1003       2003
+
+         4 AJIT       BHATA             102 MINI DIBYANSU        25-JUL-20
+     60000       1500       1004       2004
+
+         5 KUMAR      AYUSH             103 AJIT                 25-MAR-19
+     60000       1500       1005       2005
+
+
+6 rows selected.
+
+SQL> SELECT * FROM EMPLOYEE_01 ORDER BY SALSARY;
+
+EMPLOYEEID LNAME      FNAME      POSITIONID SUPERVISOR           HIREDATE
+---------- ---------- ---------- ---------- -------------------- ---------
+   SALSARY COMMISSION     DEPTID     QUALID
+---------- ---------- ---------- ----------
+         1 MINI       DIBYANSU          100 AURO                 25-DEC-20
+     50000       1500       1000       2000
+
+         2 CHARAN     PEELA             100 AURO                 25-DEC-20
+     50000       1500       1001       2001
+
+         3 BHISHESH   KUMAR             100 MINI DIBYANSU        25-JAN-20
+     50000       1500       1002       2002
+
+
+EMPLOYEEID LNAME      FNAME      POSITIONID SUPERVISOR           HIREDATE
+---------- ---------- ---------- ---------- -------------------- ---------
+   SALSARY COMMISSION     DEPTID     QUALID
+---------- ---------- ---------- ----------
+         3 BODHISATTA BHATA             101 MINI DIBYANSU        25-FEB-20
+     60000       1500       1003       2003
+
+         4 AJIT       BHATA             102 MINI DIBYANSU        25-JUL-20
+     60000       1500       1004       2004
+
+         5 KUMAR      AYUSH             103 AJIT                 25-MAR-19
+     60000       1500       1005       2005
+
+
+6 rows selected.
+
+SQL> SELECT * FROM EMPLOYEE_01 ORDER BY SALSARY DESC;
+
+EMPLOYEEID LNAME      FNAME      POSITIONID SUPERVISOR           HIREDATE
+---------- ---------- ---------- ---------- -------------------- ---------
+   SALSARY COMMISSION     DEPTID     QUALID
+---------- ---------- ---------- ----------
+         4 AJIT       BHATA             102 MINI DIBYANSU        25-JUL-20
+     60000       1500       1004       2004
+
+         3 BODHISATTA BHATA             101 MINI DIBYANSU        25-FEB-20
+     60000       1500       1003       2003
+
+         5 KUMAR      AYUSH             103 AJIT                 25-MAR-19
+     60000       1500       1005       2005
+
+
+EMPLOYEEID LNAME      FNAME      POSITIONID SUPERVISOR           HIREDATE
+---------- ---------- ---------- ---------- -------------------- ---------
+   SALSARY COMMISSION     DEPTID     QUALID
+---------- ---------- ---------- ----------
+         2 CHARAN     PEELA             100 AURO                 25-DEC-20
+     50000       1500       1001       2001
+
+         1 MINI       DIBYANSU          100 AURO                 25-DEC-20
+     50000       1500       1000       2000
+
+         3 BHISHESH   KUMAR             100 MINI DIBYANSU        25-JAN-20
+     50000       1500       1002       2002
+
+
+6 rows selected.
+
+SQL> SELECT SALSARY+COMMISSION AS 'INCOME' FROM EMPLOYEE_01;
+SELECT SALSARY+COMMISSION AS 'INCOME' FROM EMPLOYEE_01
+                             *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected
+
+
+SQL> SELECT SALSARY+COMMISSION AS "INCOME" FROM EMPLOYEE_01;
+
+    INCOME
+----------
+     51500
+     51500
+     51500
+     61500
+     61500
+     61500
+
+6 rows selected.
+
+SQL> SELECT FNAME||LNAME AS "FULL NAME" FROM EMPLOYEE_01 WHERE EXTRACT YEAR FROM HIREDATE)=2010;
+SELECT FNAME||LNAME AS "FULL NAME" FROM EMPLOYEE_01 WHERE EXTRACT YEAR FROM HIREDATE)=2010
+                                                                  *
+ERROR at line 1:
+ORA-00920: invalid relational operator
+
+SQL> SELECT LNAME,FNAME FROM EMPLOYEE_01 WHERE SUPERVISOR=&SUPERVISOR;
+Enter value for supervisor: 'AURO'
+old   1: SELECT LNAME,FNAME FROM EMPLOYEE_01 WHERE SUPERVISOR=&SUPERVISOR
+new   1: SELECT LNAME,FNAME FROM EMPLOYEE_01 WHERE SUPERVISOR='AURO'
+
+LNAME      FNAME
+---------- ----------
+MINI       DIBYANSU
+CHARAN     PEELA
+
+SQL> insert into employee_01 values(6,'KUMAR','AYUSH',103,'MAJHI','25-MARCH-2010',70000,1500,1006,2007);
+
+1 row created.
+
+SQL> insert into employee_01 values(7,'KUMAR','VERMA',103,'MAJHI','25-APRIL-2010',70000,1500,1007,2008);
+
+1 row created.
+
+SQL> SELECT FNAME||LNAME AS "FULL NAME" FROM EMPLOYEE_01 WHERE EXTRACT (YEAR FROM HIREDATE)=2010;
+
+FULL NAME
+--------------------
+AYUSHKUMAR
+VERMAKUMAR
+
+SQL> SELECT SUM(SALSARY),MAX(SALSARY),MIN(SALSARY) FROM EMPLOYEE_01;
+
+SUM(SALSARY) MAX(SALSARY) MIN(SALSARY)
+------------ ------------ ------------
+      470000        70000        50000
+
+SQL> SELECT SUM(SALARY),DEPTID FROM EMPLOYEE_01 GROUP BY DEPTID;
+SELECT SUM(SALARY),DEPTID FROM EMPLOYEE_01 GROUP BY DEPTID
+           *
+ERROR at line 1:
+ORA-00904: "SALARY": invalid identifier
+
+
+SQL> SELECT SUM(SALSARY),DEPTID FROM EMPLOYEE_01 GROUP BY DEPTID;
+
+SUM(SALSARY)     DEPTID
+------------ ----------
+       50000       1000
+       60000       1003
+       70000       1006
+       50000       1001
+       50000       1002
+       70000       1007
+       60000       1004
+       60000       1005
+
+8 rows selected.
+
+SQL> SELECT SUM(SALSARY),MAX(SALSARY),MIN(SALSARY),AVG(SALSARY) FROM EMPLOYEE_01;
+
+SUM(SALSARY) MAX(SALSARY) MIN(SALSARY) AVG(SALSARY)
+------------ ------------ ------------ ------------
+      470000        70000        50000        58750
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> SELECT COUNT(*),FNAME FROM EMPLOYEE_01 WHERE DEPTID=1000;
+SELECT COUNT(*),FNAME FROM EMPLOYEE_01 WHERE DEPTID=1000
+                *
+ERROR at line 1:
+ORA-00937: not a single-group group function
+
+
+SQL> SELECT COUNT(*),EMPLOYEEID FROM EMPLOYEE_01 WHERE DEPTID=1000;
+SELECT COUNT(*),EMPLOYEEID FROM EMPLOYEE_01 WHERE DEPTID=1000
+                *
+ERROR at line 1:
+ORA-00937: not a single-group group function
+
+
+SQL> SELECT COUNT(FNAME),EMPLOYEEID FROM EMPLOYEE_01 WHERE DEPTID=1000;
+SELECT COUNT(FNAME),EMPLOYEEID FROM EMPLOYEE_01 WHERE DEPTID=1000
+                    *
+ERROR at line 1:
+ORA-00937: not a single-group group function
+
+
+SQL> SELECT COUNT(EMPLOYEEID) FROM EMPLOYEE_01 WHERE DEPTID=1000;
+
+COUNT(EMPLOYEEID)
+-----------------
+                1
+
+SQL> insert into employee_01 values(6,'KUMAR','JENA',104,'MAJHI','25-MARCH-2010',70000,1500,1000,2007);
+
+1 row created.
+
+SQL> insert into employee_01 values(6,'KUMAR','RITA',105,'MAJHI','25-MARCH-2010',70000,1500,1000,2008);
+
+1 row created.
+
+SQL> SELECT COUNT(EMPLOYEEID) FROM EMPLOYEE_01 WHERE DEPTID=1000;
+
+COUNT(EMPLOYEEID)
+-----------------
+                3
+
+SQL> SELECT LOWER(FNAME),UPPER(FNAME),INITCAP(FNAME) FROM EMPLOYEE_01;
+
+LOWER(FNAM UPPER(FNAM INITCAP(FN
+---------- ---------- ----------
+dibyansu   DIBYANSU   Dibyansu
+peela      PEELA      Peela
+kumar      KUMAR      Kumar
+bhata      BHATA      Bhata
+bhata      BHATA      Bhata
+ayush      AYUSH      Ayush
+ayush      AYUSH      Ayush
+verma      VERMA      Verma
+jena       JENA       Jena
+rita       RITA       Rita
+
+10 rows selected.
+
+SQL> SELECT LOWER(FNAME) AS "NAME IN LOWER_CASE",UPPER(FNAME) AS "NAME IN UPPER_CASE",INITCAP(FNAME) AS "NAME IN CAMAL_CASE" FROM EMPLOYEE_01;
+
+NAME IN LO NAME IN UP NAME IN CA
+---------- ---------- ----------
+dibyansu   DIBYANSU   Dibyansu
+peela      PEELA      Peela
+kumar      KUMAR      Kumar
+bhata      BHATA      Bhata
+bhata      BHATA      Bhata
+ayush      AYUSH      Ayush
+ayush      AYUSH      Ayush
+verma      VERMA      Verma
+jena       JENA       Jena
+rita       RITA       Rita
+
+10 rows selected.
+
+SQL> SELECT > (SELECT AVG(SALSARY) FROM EMPLOYEE_01);
+SELECT > (SELECT AVG(SALSARY) FROM EMPLOYEE_01)
+       *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> SELECT EMPLOYEEID,SALSARY FROM EMPLOYEE_01 WHERE SALSARY > (SELECT AVG(SALSARY) FROM EMPLOYEE_01);
+
+EMPLOYEEID    SALSARY
+---------- ----------
+         6      70000
+         7      70000
+         6      70000
+         6      70000
+
+SQL> SELECT DISTINCT(COUNT(DEPTID)) FROM EMPLOYEE_01;
+
+(COUNT(DEPTID))
+---------------
+             10
+
+SQL> SELECT COUNT(DEPTID) FROM EMPLOYEE_01;
+
+COUNT(DEPTID)
+-------------
+           10
+
+SQL> SELECT COUNT(DISTINCT DEPTID) FROM EMPLOYEE_01;
+
+COUNT(DISTINCTDEPTID)
+---------------------
+                    8
+
+SQL> ALTER TABLE EMPLOYEE_01 ADD SPECIALDA NUMBER(7);
+
+Table altered.
+
+SQL> DESC EMPLOYEE_01;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPLOYEEID                                         NUMBER(38)
+ LNAME                                              VARCHAR2(10)
+ FNAME                                              VARCHAR2(10)
+ POSITIONID                                         NUMBER(38)
+ SUPERVISOR                                         VARCHAR2(20)
+ HIREDATE                                           DATE
+ SALSARY                                            NUMBER(38)
+ COMMISSION                                         FLOAT(126)
+ DEPTID                                             NUMBER(38)
+ QUALID                                             NUMBER(38)
+ SPECIALDA                                          NUMBER(7)
+
+SQL> ALTER TABLE EMPLOYEE_01 MODIFY SPECIALDA NUMBER(9,2);
+
+Table altered.
+
+SQL> DESC EMPLOYEE_01;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPLOYEEID                                         NUMBER(38)
+ LNAME                                              VARCHAR2(10)
+ FNAME                                              VARCHAR2(10)
+ POSITIONID                                         NUMBER(38)
+ SUPERVISOR                                         VARCHAR2(20)
+ HIREDATE                                           DATE
+ SALSARY                                            NUMBER(38)
+ COMMISSION                                         FLOAT(126)
+ DEPTID                                             NUMBER(38)
+ QUALID                                             NUMBER(38)
+ SPECIALDA                                          NUMBER(9,2)
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> UPDATE EMPLOYEE_01 SET SPECIALDA=CASE
+  2  WHEN COMMISSION > 0 THEN SALSARY*0.45
+  3  ELSE SALSARY * 0.75
+  4  END;
+
+10 rows updated.
+
+SQL> SELECT SPECIALDA FROM EMPLOYEE_01;
+
+ SPECIALDA
+----------
+     22500
+     22500
+     22500
+     27000
+     27000
+     27000
+     31500
+     31500
+     31500
+     31500
+
+10 rows selected.
+
+SQL> SELECT SUBSTR(LNAME,2,2),SUBSTR(FNAME,3,3) FROM EMPLOYEE_01 WHERE FNAME LIKE 'A%' OR FNAME LIKE 'E%' OR FNAME LIKE 'I%' OR FNAME LIKE 'O%' OR FNAME LIKE 'U%';
+
+SUBSTR(L SUBSTR(FNAME
+-------- ------------
+UM       USH
+UM       USH
+
+SQL> select hiredate,TO_CHAR(hiredate,'DD-MM-YYYY') AS FORMAT1,
+  2  TO_CHAR(hiredate,'MM/DD/YYYY') AS FORMAT2,
+  3  TO_CHAR(hiredate,'YYYY-MM-DD') as FORMAT3,
+  4  TO_CHAR(hiredate,'Day,Month DD,YYYY') as FORMAT4
+  5  FROM EMPLOYEE_01;
+
+HIREDATE  FORMAT1    FORMAT2    FORMAT3
+--------- ---------- ---------- ----------
+FORMAT4
+--------------------------------------------------------------------------------
+25-DEC-20 25-12-2020 12/25/2020 2020-12-25
+Friday   ,December  25,2020
+
+25-DEC-20 25-12-2020 12/25/2020 2020-12-25
+Friday   ,December  25,2020
+
+25-JAN-20 25-01-2020 01/25/2020 2020-01-25
+Saturday ,January   25,2020
+
+
+HIREDATE  FORMAT1    FORMAT2    FORMAT3
+--------- ---------- ---------- ----------
+FORMAT4
+--------------------------------------------------------------------------------
+25-FEB-20 25-02-2020 02/25/2020 2020-02-25
+Tuesday  ,February  25,2020
+
+25-JUL-20 25-07-2020 07/25/2020 2020-07-25
+Saturday ,July      25,2020
+
+25-MAR-19 25-03-2019 03/25/2019 2019-03-25
+Monday   ,March     25,2019
+
+
+HIREDATE  FORMAT1    FORMAT2    FORMAT3
+--------- ---------- ---------- ----------
+FORMAT4
+--------------------------------------------------------------------------------
+25-MAR-10 25-03-2010 03/25/2010 2010-03-25
+Thursday ,March     25,2010
+
+25-APR-10 25-04-2010 04/25/2010 2010-04-25
+Sunday   ,April     25,2010
+
+25-MAR-10 25-03-2010 03/25/2010 2010-03-25
+Thursday ,March     25,2010
+
+
+HIREDATE  FORMAT1    FORMAT2    FORMAT3
+--------- ---------- ---------- ----------
+FORMAT4
+--------------------------------------------------------------------------------
+25-MAR-10 25-03-2010 03/25/2010 2010-03-25
+Thursday ,March     25,2010
+
+
+10 rows selected.
+
+SQL> ALTER TABLE EMPLOYEE_01 ADD EMPLOYEEID NUMBER(38) PRIMARY KEY;
+
+SQL> SELECT FNAME,SUPERVISOR,DEPTID,SALARY FROM EMPLOYEE_01 WHERE specialDA BETWEEN 22500 AND 27000;
