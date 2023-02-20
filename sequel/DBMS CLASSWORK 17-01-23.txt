@@ -1,0 +1,213 @@
+SQL> CREATE TABLE T1(NAME VARCHAR2(10) NOT NULL);
+
+Table created.
+
+SQL> INSERT INTO T1 VALUES('ABC');
+
+1 row created.
+
+SQL> INSERT INTO T1 VALUES('');
+INSERT INTO T1 VALUES('')
+                      *
+ERROR at line 1:
+ORA-01400: cannot insert NULL into ("SYSTEM"."T1"."NAME")
+
+
+SQL> CREATE TABLE T1(NAME VARCHAR2(10) NOT NULL,MARKS NUMBER(3) DEFAULT 80);
+CREATE TABLE T1(NAME VARCHAR2(10) NOT NULL,MARKS NUMBER(3) DEFAULT 80)
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
+
+
+SQL> CREATE TABLE T2(NAME VARCHAR2(10) NOT NULL,MARKS NUMBER(3) DEFAULT 80);
+
+Table created.
+
+SQL> INSERT INTO T2 VALUES('ABC',60);
+
+1 row created.
+
+SQL> INSERT INTO T2 (NAME) VALUES('ABC');
+
+1 row created.
+
+SQL> SELECT * FROM T2;
+
+NAME            MARKS
+---------- ----------
+ABC                60
+ABC                80
+
+SQL> INSERT INTO T2 VALUES('MINI DIBYANSU');
+INSERT INTO T2 VALUES('MINI DIBYANSU')
+            *
+ERROR at line 1:
+ORA-00947: not enough values
+
+
+SQL> INSERT INTO T2 (NAME) VALUES('MINI DIBYANSU',20);
+INSERT INTO T2 (NAME) VALUES('MINI DIBYANSU',20)
+            *
+ERROR at line 1:
+ORA-00913: too many values
+
+
+SQL> INSERT INTO T2 (NAME) VALUES('MINI DIBYANSU');
+INSERT INTO T2 (NAME) VALUES('MINI DIBYANSU')
+                             *
+ERROR at line 1:
+ORA-12899: value too large for column "SYSTEM"."T2"."NAME" (actual: 13,
+maximum: 10)
+
+
+SQL> INSERT INTO T2 (NAME) VALUES('MINI DIBYA');
+
+1 row created.
+
+SQL> CREATE TABLE T3(NAME VARCHAR2(10) NOT NULL,MARKS NUMBER(3) DEFAULT 80,SUBJECT VARCHAR2(10) UNIQUE);
+
+Table created.
+
+SQL> INSERT INTO T3 VALUES('A',70,'DBMS');
+
+1 row created.
+
+SQL> INSERT INTO T3 VALUES('A',70,'DBMS');
+INSERT INTO T3 VALUES('A',70,'DBMS')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SYSTEM.SYS_C007476) violated
+
+
+SQL> CREATE TABLE T4(NAME VARCHAR2(10) NOT NULL,MARKS NUMBER(3) DEFAULT 80,SUBJECT VARCHAR2(10) UNIQUE,CGPA NUMBER(3) CHECK (CGPA>9));
+
+Table created.
+
+SQL> INSERT INTO T4 VALUES('A',70,'DBMS',10);                                                                                   1 row created.
+
+SQL> INSERT INTO T4 VALUES('A',70,'DBMS',8);
+INSERT INTO T4 VALUES('A',70,'DBMS',8)
+*
+ERROR at line 1:
+ORA-02290: check constraint (SYSTEM.SYS_C007478) violated
+
+
+SQL> EXIT
+Disconnected from Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+
+C:\Users\KIIT>SQLPLUS
+
+SQL*Plus: Release 11.2.0.2.0 Production on Tue Jan 17 16:22:21 2023
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+Enter user-name: SYSTEM
+Enter password:
+ERROR:
+ORA-01017: invalid username/password; logon denied
+
+
+Enter user-name: SYSTEMkiit
+Enter password:
+ERROR:
+ORA-01017: invalid username/password; logon denied
+
+
+Enter user-name: system
+Enter password:
+
+Connected to:
+Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+
+SQL> create table T5(Name varchar2(10),dob date);
+
+Table created.
+
+SQL> desc T5;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ NAME                                               VARCHAR2(10)
+ DOB                                                DATE
+
+SQL> insert into T5 values('A','17-Jan-2023');
+
+1 row created.
+
+SQL> CREATE TABLE STUDENT (StudentId INT NOT NULL, Last NAME, First NAME, Street VARCHAR2(40), City NAME, State VARCHAR(20), Zip INT DEFAULT 760010, StartTerm DATE DEFAULT 19-10-2003, BirthDate DATE, FacultyId INT UNIQUE, MajorId INT UNIQUE, Phone NUMBER(12));
+CREATE TABLE STUDENT (StudentId INT NOT NULL, Last NAME, First NAME, Street VARCHAR2(40), City NAME, State VARCHAR(20), Zip INT DEFAULT 760010, StartTerm DATE DEFAULT 19-10-2003, BirthDate DATE, FacultyId INT UNIQUE, MajorId INT UNIQUE, Phone NUMBER(12))
+                                                   *
+ERROR at line 1:
+ORA-00902: invalid datatype
+
+
+SQL> CREATE TABLE STUDENT (StudentId INT NOT NULL, Last NAME, First NAME, Street VARCHAR2(40), City NAME, State VARCHAR(20), Zip INT DEFAULT 760010, StartTerm DATE DEFAULT 19-10-2003, BirthDate DATE, FacultyId INT UNIQUE, MajorId INT UNIQUE, Phone NUMBER);
+CREATE TABLE STUDENT (StudentId INT NOT NULL, Last NAME, First NAME, Street VARCHAR2(40), City NAME, State VARCHAR(20), Zip INT DEFAULT 760010, StartTerm DATE DEFAULT 19-10-2003, BirthDate DATE, FacultyId INT UNIQUE, MajorId INT UNIQUE, Phone NUMBER)
+                                                   *
+ERROR at line 1:
+ORA-00902: invalid datatype
+
+
+SQL> CREATE TABLE STUDENT (StudentId INT NOT NULL, Last NAME, First NAME, Street VARCHAR2(40), City NAME, State VARCHAR(20), Zip INT DEFAULT 760010, StartTerm DATE DEFAULT 19-10-2003, BirthDate DATE, FacultyId INT UNIQUE, MajorId INT UNIQUE, Phone INT);
+CREATE TABLE STUDENT (StudentId INT NOT NULL, Last NAME, First NAME, Street VARCHAR2(40), City NAME, State VARCHAR(20), Zip INT DEFAULT 760010, StartTerm DATE DEFAULT 19-10-2003, BirthDate DATE, FacultyId INT UNIQUE, MajorId INT UNIQUE, Phone INT)
+                                                   *
+ERROR at line 1:
+ORA-00902: invalid datatype
+
+
+SQL> CREATE TABLE STUDENT (StudentId INT NOT NULL, Last NAME, First NAME, Street VARCHAR2(40), City varchar2(30) NOT NULL, State VARCHAR2(20), Zip INT DEFAULT 760010, StartTerm DATE, BirthDate DATE, FacultyId INT UNIQUE, MajorId INT UNIQUE, Phone number(11) UNIQUE);
+CREATE TABLE STUDENT (StudentId INT NOT NULL, Last NAME, First NAME, Street VARCHAR2(40), City varchar2(30) NOT NULL, State VARCHAR2(20), Zip INT DEFAULT 760010, StartTerm DATE, BirthDate DATE, FacultyId INT UNIQUE, MajorId INT UNIQUE, Phone number(11) UNIQUE)
+                                                   *
+ERROR at line 1:
+ORA-00902: invalid datatype
+
+
+SQL> CREATE TABLE STUDENT (StudentId number(6) NOT NULL, Last varchar2(10), First varchar2(10) NOT NULL, Street VARCHAR2(40), City varchar2(30) NOT NULL, State VARCHAR2(20), Zip INT DEFAULT 760010, StartTerm DATE, BirthDate DATE, FacultyId INT UNIQUE, MajorId INT UNIQUE, Phone number(11) UNIQUE);
+
+Table created.
+
+SQL> CREATE TABLE COURSE(COURSEID INT NOT NULL,TITLE VARCHAR2(9),CREDITS INT DEFAULT 4,PREREQ VARCHAR2(10));
+
+Table created.
+
+SQL> CREATE TABLE CRSSECTION(CSID INT UNIQUE,COURSEID INT NOT NULL UNIQUE,SECTION VARCHAR2(2) DEFAULT 'C',TERMID INT NOT NULL, FACULTYID INT UNIQUE,DAY DATE,STARTDATE DATE, ENDDATE DATE);
+
+Table created.
+
+SQL> CREATE TABLE TERM(TERMID INT NOT NULL,TERMDESC VARCHAR(30),START_DATE DATE,END_DATE DATE);
+
+Table created.
+
+SQL> CREATE TABLE ROOM (RoomType VARCHAR2(8) DEFAULT 'NON-A/C', RoomDesc VARCHAR2(30));
+
+Table created.
+
+SQL> CREATE TABLE REGISTRATION (StudentId INT NOT NULL UNIQUE, CsId INT UNIQUE, Midterm INT DEFAULT 0, Final INT DEFAULT 0, RegStatus VARCHAR2(7) DEFAULT 'SUCCESS');
+
+Table created.
+
+SQL> CREATE TABLE DEPARTMENT (DeptId INT UNIQUE, DeptName VARCHAR2(14) NOT NULL, FacultyId INT UNIQUE);
+
+Table created.
+
+SQL> CREATE TABLE MAJOR (MajorId INT NOT NULL UNIQUE, MajorDesc VARCHAR2(30));
+
+Table created.
+
+SQL> CREATE TABLE LOCATION (RoomId INT UNIQUE NOT NULL, Building VARCHAR2(8) DEFAULT 'BLOCK-A', RoomNo INT NOT NULL, Capacity INT , RoomType VARCHAR2(8) DEFAULT 'NON-A/C').
+  2  ;
+CREATE TABLE LOCATION (RoomId INT UNIQUE NOT NULL, Building VARCHAR2(8) DEFAULT 'BLOCK-A', RoomNo INT NOT NULL, Capacity INT , RoomType VARCHAR2(8) DEFAULT 'NON-A/C').
+
+
+                                      *
+ERROR at line 1:
+ORA-00922: missing or invalid option
+
+
+SQL> CREATE TABLE LOCATION (RoomId INT UNIQUE NOT NULL, Building VARCHAR2(8) DEFAULT 'BLOCK-A', RoomNo INT NOT NULL, Capacity INT , RoomType VARCHAR2(8) DEFAULT 'NON-A/C');
+
+Table created.
+
+SQL> CREATE TABLE FACULTY (FacultyId INT NOT NULL UNIQUE, Name VARCHAR2(15), RoomId INT UNIQUE, Phone INT UNIQUE, DeptId INT UNIQUE);
+
+Table created.

@@ -1,0 +1,300 @@
+Microsoft Windows [Version 10.0.22621.1105]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\KIIT>sqlplus
+
+SQL*Plus: Release 11.2.0.2.0 Production on Tue Jan 24 16:36:08 2023
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+Enter user-name: system
+Enter password:
+
+Connected to:
+Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+
+SQL> CREATE TABLE FACULTY (FacultyId INT NOT NULL UNIQUE, Name VARCHAR2(15), RoomId INT UNIQUE, Phone INT UNIQUE, DeptId INT UNIQUE);
+CREATE TABLE FACULTY (FacultyId INT NOT NULL UNIQUE, Name VARCHAR2(15), RoomId INT UNIQUE, Phone INT UNIQUE, DeptId INT UNIQUE)
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
+
+
+SQL> CREATE TABLE FACULTY (FacultyId INT NOT NULL UNIQUE, Name VARCHAR2(15), RoomId INT UNIQUE, Phone INT UNIQUE, DeptId INT UNIQUE);
+CREATE TABLE FACULTY (FacultyId INT NOT NULL UNIQUE, Name VARCHAR2(15), RoomId INT UNIQUE, Phone INT UNIQUE, DeptId INT UNIQUE)
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
+
+
+SQL> desc FACULTY;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ FACULTYID                                 NOT NULL NUMBER(38)
+ NAME                                               VARCHAR2(15)
+ ROOMID                                             NUMBER(38)
+ PHONE                                              NUMBER(38)
+ DEPTID                                             NUMBER(38)
+
+SQL> desc employee;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPLOYEEID                                NOT NULL NUMBER(38)
+ LNAME                                              VARCHAR2(15)
+ FNAME                                     NOT NULL VARCHAR2(15)
+ POSITIONID                                NOT NULL NUMBER(38)
+ SUPERVISOR                                         VARCHAR2(20)
+ HIREDATE                                           DATE
+ SALARY                                             NUMBER(7)
+ COMMISSION                                         NUMBER(38)
+ DEPTID                                             NUMBER(38)
+ QUALID                                             NUMBER(38)
+
+SQL> select * from employee;
+
+no rows selected
+
+SQL> insert into employee values (22057020,'RAJ','AURO',19,'DBMS_SIR','22-05-2019',45000,3000,012,20);
+insert into employee values (22057020,'RAJ','AURO',19,'DBMS_SIR','22-05-2019',45000,3000,012,20)
+                                                                 *
+ERROR at line 1:
+ORA-01843: not a valid month
+
+
+SQL> insert into employee values (22057020,'RAJ','AURO',19,'DBMS_SIR',22-05-2019,45000,3000,012,20);
+insert into employee values (22057020,'RAJ','AURO',19,'DBMS_SIR',22-05-2019,45000,3000,012,20)
+                                                                      *
+ERROR at line 1:
+ORA-00932: inconsistent datatypes: expected DATE got NUMBER
+
+
+SQL> insert into employee values (22057020,'RAJ','AURO',19,'DBMS_SIR',"22-05-2019",45000,3000,012,20);
+insert into employee values (22057020,'RAJ','AURO',19,'DBMS_SIR',"22-05-2019",45000,3000,012,20)
+                                                                 *
+ERROR at line 1:
+ORA-00984: column not allowed here
+
+
+SQL> insert into employee values (22057020,'RAJ','AURO',19,'DBMS_SIR','2019-05-20',45000,3000,012,20);
+insert into employee values (22057020,'RAJ','AURO',19,'DBMS_SIR','2019-05-20',45000,3000,012,20)
+                                                                 *
+ERROR at line 1:
+ORA-01861: literal does not match format string
+
+
+SQL> desc employee
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPLOYEEID                                NOT NULL NUMBER(38)
+ LNAME                                              VARCHAR2(15)
+ FNAME                                     NOT NULL VARCHAR2(15)
+ POSITIONID                                NOT NULL NUMBER(38)
+ SUPERVISOR                                         VARCHAR2(20)
+ HIREDATE                                           DATE
+ SALARY                                             NUMBER(7)
+ COMMISSION                                         NUMBER(38)
+ DEPTID                                             NUMBER(38)
+ QUALID                                             NUMBER(38)
+
+SQL> insert into employee values (22057020,'RAJ','AURO',19,'DBMS_SIR','2019-feb-20',45000,3000,012,20);
+insert into employee values (22057020,'RAJ','AURO',19,'DBMS_SIR','2019-feb-20',45000,3000,012,20)
+                                                                 *
+ERROR at line 1:
+ORA-01861: literal does not match format string
+
+
+SQL> insert into employee values (22057020,'RAJ','AURO',19,'DBMS_SIR','23-march-2012',45000,3000,012,20);
+
+1 row created.
+
+SQL> insert into employee values (22057020,'RAJ','SASWAT',19,'DBMS_SIR','23-jan-2012',45000,3000,012,20);
+insert into employee values (22057020,'RAJ','SASWAT',19,'DBMS_SIR','23-jan-2012',45000,3000,012,20)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SYSTEM.SYS_C007512) violated
+
+
+SQL> insert into employee values (22057020,'RAJ','SASWAT',12,'DBMS_SIR','23-jan-2012',45000,3000,013,20);
+insert into employee values (22057020,'RAJ','SASWAT',12,'DBMS_SIR','23-jan-2012',45000,3000,013,20)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SYSTEM.SYS_C007514) violated
+
+
+SQL> insert into employee values (22057021,'RAJ','SASWAT',12,'DBMS_SIR','23-jan-2012',45000,3000,013,20);
+insert into employee values (22057021,'RAJ','SASWAT',12,'DBMS_SIR','23-jan-2012',45000,3000,013,20)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SYSTEM.SYS_C007514) violated
+
+
+SQL> desc employee
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPLOYEEID                                NOT NULL NUMBER(38)
+ LNAME                                              VARCHAR2(15)
+ FNAME                                     NOT NULL VARCHAR2(15)
+ POSITIONID                                NOT NULL NUMBER(38)
+ SUPERVISOR                                         VARCHAR2(20)
+ HIREDATE                                           DATE
+ SALARY                                             NUMBER(7)
+ COMMISSION                                         NUMBER(38)
+ DEPTID                                             NUMBER(38)
+ QUALID                                             NUMBER(38)
+
+SQL> insert into employee values (22057022,'AJ','SASWAT',312,'DBMS_SIR_1','23-jan-2012',45000,3000,913,120);
+
+1 row created.
+
+SQL> insert into employee values (22057024,'AJ','SASWAT',312,'DBMS_SIR_1','23-jan-2012',45000,3000,3,1);
+insert into employee values (22057024,'AJ','SASWAT',312,'DBMS_SIR_1','23-jan-2012',45000,3000,3,1)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SYSTEM.SYS_C007512) violated
+
+
+SQL> insert into employee values (22057024,'AJ','SASWAT',3129,'DBMS_SIR_1','23-jan-2012',45000,3000,3,1);
+
+1 row created.
+
+SQL> select * from employee
+  2  ;
+
+EMPLOYEEID LNAME           FNAME           POSITIONID SUPERVISOR
+---------- --------------- --------------- ---------- --------------------
+HIREDATE      SALARY COMMISSION     DEPTID     QUALID
+--------- ---------- ---------- ---------- ----------
+  22057020 RAJ             AURO                    19 DBMS_SIR
+23-MAR-12      45000       3000         12         20
+
+  22057022 AJ              SASWAT                 312 DBMS_SIR_1
+23-JAN-12      45000       3000        913        120
+
+  22057024 AJ              SASWAT                3129 DBMS_SIR_1
+23-JAN-12      45000       3000          3          1
+
+
+SQL> select * from employee;
+
+EMPLOYEEID LNAME           FNAME           POSITIONID SUPERVISOR
+---------- --------------- --------------- ---------- --------------------
+HIREDATE      SALARY COMMISSION     DEPTID     QUALID
+--------- ---------- ---------- ---------- ----------
+  22057020 RAJ             AURO                    19 DBMS_SIR
+23-MAR-12      45000       3000         12         20
+
+  22057022 AJ              SASWAT                 312 DBMS_SIR_1
+23-JAN-12      45000       3000        913        120
+
+  22057024 AJ              SASWAT                3129 DBMS_SIR_1
+23-JAN-12      45000       3000          3          1
+
+
+SQL> alter table employee rename to employee_7020;
+
+Table altered.
+
+SQL> select * from employee_7020;
+
+EMPLOYEEID LNAME           FNAME           POSITIONID SUPERVISOR
+---------- --------------- --------------- ---------- --------------------
+HIREDATE      SALARY COMMISSION     DEPTID     QUALID
+--------- ---------- ---------- ---------- ----------
+  22057020 RAJ             AURO                    19 DBMS_SIR
+23-MAR-12      45000       3000         12         20
+
+  22057022 AJ              SASWAT                 312 DBMS_SIR_1
+23-JAN-12      45000       3000        913        120
+
+  22057024 AJ              SASWAT                3129 DBMS_SIR_1
+23-JAN-12      45000       3000          3          1
+
+
+SQL> select lname,fname from employee_7020;
+
+LNAME           FNAME
+--------------- ---------------
+RAJ             AURO
+AJ              SASWAT
+AJ              SASWAT
+
+SQL> select lname||fname from employee_7020;
+
+LNAME||FNAME
+------------------------------
+RAJAURO
+AJSASWAT
+AJSASWAT
+
+SQL> select lname as "Last Name" from employee_7020;
+
+Last Name
+---------------
+RAJ
+AJ
+AJ
+
+SQL> select fname||lname as "Last Name" from employee_7020;
+
+Last Name
+------------------------------
+AURORAJ
+SASWATAJ
+SASWATAJ
+
+SQL> select salary from employee where salary>1000;
+select salary from employee where salary>1000
+                   *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> select salary from employee_7020 where salary>1000;
+
+    SALARY
+----------
+     45000
+     45000
+     45000
+
+SQL> select salary from employee_7020 where salary>&salary;
+Enter value for salary: 300
+old   1: select salary from employee_7020 where salary>&salary
+new   1: select salary from employee_7020 where salary>300
+
+    SALARY
+----------
+     45000
+     45000
+     45000
+
+SQL> select lname from employee_7020 where lname is NULL;
+
+no rows selected
+
+SQL> select lname from employee_7020 where lname in ("ABC","PQR");
+select lname from employee_7020 where lname in ("ABC","PQR")
+                                                      *
+ERROR at line 1:
+ORA-00904: "PQR": invalid identifier
+
+
+SQL> select lname from employee_7020 where lname in ('ABC','PQR');
+
+no rows selected
+
+SQL> select lname from employee_7020 where lname in ('SASWAT','PQR');
+
+no rows selected
+
+SQL> select lname from employee_7020 where lname in ('Raj','PQR');
+
+no rows selected
+
+SQL> select lname from employee_7020 where lname in ('RAJ','PQR');
+
+LNAME
+---------------
+RAJ
+
+SQL>

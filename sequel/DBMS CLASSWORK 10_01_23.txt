@@ -1,0 +1,149 @@
+SQL> CREATE USER CSE02 IDENTIFIED BY 22057020;
+
+User created.
+
+SQL> GRANT ALL PRIVILEGE TO CSE02;
+
+Grant succeeded.
+
+SQL> CONNECT CSE02/22057020;
+Connected.
+SQL> SELECT USER FROM DUAL;
+
+USER
+------------------------------
+CSE02
+
+SQL> SELECT SYSDATE FROM DUAL;
+
+SYSDATE
+---------
+10-JAN-23
+
+SQL> SELECT 2+5 FROM DUAL;
+
+       2+5
+----------
+         7
+
+SQL> SELECT abs(-3) from dual;
+
+   ABS(-3)
+----------
+         3
+
+SQL> select * from dual;
+
+D
+-
+X
+
+SQL> select &a+&b from dual;
+Enter value for a: 6
+Enter value for b: 7
+old   1: select &a+&b from dual
+new   1: select 6+7 from dual
+
+       6+7
+----------
+        13
+
+SQL> select 'KIIT UIVERSITY' FROM DUAL;
+
+'KIITUIVERSITY
+--------------
+KIIT UIVERSITY
+
+SQL> DESC DUAL;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DUMMY                                              VARCHAR2(1)
+
+SQL> SELECT 5 FROM DUAL;
+
+         5
+----------
+         5
+
+SQL> DESC DUAL;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DUMMY                                              VARCHAR2(1)
+
+SQL> CREATE TABLE STUDENT(ROLL NUMBER,NAME VARCHAR2(20),GENDER VARCHAR(1),AGE NUMBER,CGPA NUMBER(4,2));
+
+Table created.
+
+SQL> DESC STUDENT;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ROLL                                               NUMBER
+ NAME                                               VARCHAR2(20)
+ GENDER                                             VARCHAR2(1)
+ AGE                                                NUMBER
+ CGPA                                               NUMBER(4,2)
+
+SQL> DESCRIBE STUDENT;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ROLL                                               NUMBER
+ NAME                                               VARCHAR2(20)
+ GENDER                                             VARCHAR2(1)
+ AGE                                                NUMBER
+ CGPA                                               NUMBER(4,2)
+
+SQL> INSERT INTO STUDENT VALUES (22057029,'SMALL DIBYANSU','M',10,4.05);
+
+1 row created.
+
+SQL> INSERT INTO STUDENT VALUES(&ROLL,&NAME,&GENDER,&AGE,&CGPA);
+Enter value for roll: 22057020
+Enter value for name: AURO SASWAT RAJ
+Enter value for gender: M
+Enter value for age: 19
+Enter value for cgpa: 9.05
+old   1: INSERT INTO STUDENT VALUES(&ROLL,&NAME,&GENDER,&AGE,&CGPA)
+new   1: INSERT INTO STUDENT VALUES(22057020,AURO SASWAT RAJ,M,19,9.05)
+
+SQL> INSERT INTO STUDENT VALUES(&ROLL,&NAME,&GENDER,&AGE,&CGPA);
+Enter value for roll: 22057020
+Enter value for name: AURO SAS^Z
+
+Enter value for gender: M
+Enter value for age: 19
+Enter value for cgpa: 9.05
+old   1: INSERT INTO STUDENT VALUES(&ROLL,&NAME,&GENDER,&AGE,&CGPA)
+new   1: INSERT INTO STUDENT VALUES(22057020,AURO SAS→,M,19,9.05)
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* INSERT INTO STUDENT VALUES(&ROLL,&NAME,&GENDER,&AGE,&CGPA)
+SQL> INSERT INTO STUDENT VALUES(&ROLL,&NAME,&GENDER,&AGE,&CGPA);
+Enter value for roll: 22057020
+Enter value for name: AURO
+Enter value for gender: M
+Enter value for age: 19
+Enter value for cgpa: 9.02
+old   1: INSERT INTO STUDENT VALUES(&ROLL,&NAME,&GENDER,&AGE,&CGPA)
+new   1: INSERT INTO STUDENT VALUES(22057020,AURO,M,19,9.02)
+
+
+SQL> INSERT INTO STUDENT VALUES('&ROLL','&NAME','&GENDER','&AGE','&CGPA');
+Enter value for roll: 22057020
+Enter value for name: AURO SASWAT RAJ
+Enter value for gender: M
+Enter value for age: 19
+Enter value for cgpa: 9.02
+old   1: INSERT INTO STUDENT VALUES('&ROLL','&NAME','&GENDER','&AGE','&CGPA')
+new   1: INSERT INTO STUDENT VALUES('22057020','AURO SASWAT RAJ','M','19','9.02')
+
+1 row created.
+
+SQL> SELECT * FROM STUDENT;
+
+      ROLL NAME                 G        AGE       CGPA
+---------- -------------------- - ---------- ----------
+  22057029 SMALL DIBYANSU       M         10       4.05
+  22057020 AURO SASWAT RAJ      M         19       9.02
