@@ -2,6 +2,38 @@
 #include<unistd.h>
 #include<sys/types.h>
 
+void createChildTree(int child){
+    // Enter No. of Child to be produced
+    int ret=0;
+    if(child==0){
+        return;
+    }
+    int n;
+    scanf("%d",&n);
+    for(int i=0;i<n;i++){
+        ret=fork();
+        if(ret==0){
+        int x;
+        printf("Enter No. of Child");
+        createChildTree(n);
+        }
+        
+    }
+    // printf("No of Child to be produced \n");
+    // for(int i=0;i<1;i++){
+    //     ret=fork();
+    //     // print no. of child
+    //     int n;
+    //     scanf("%d",&n);
+    //     for(int j=0;j<n;j++){
+    //         ret=fork();
+    //         if(ret==0){
+    //         printf("Index:%d Parent Process ID:%d , Child Process ID:%d \n",j , getppid(),getpid());
+    //         break;
+    //         }
+    //     }
+    // }
+}
 
 int main(){
     int ret=0;
@@ -12,8 +44,8 @@ int main(){
     //     printf("Wallah Its is Parent Process \n");
     // }
     // ret=fork();
-    printf("No of Child to be produced \n");
-    for(int i=0;i<1;i++){
+    
+     for(int i=0;i<1;i++){
         ret=fork();
         // print no. of child
         int n;
