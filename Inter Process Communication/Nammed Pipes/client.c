@@ -12,12 +12,20 @@ int main(){
         perror("open");
         exit(1);
     }
-    char sendBuffer[20]="Hello";
+    // while()
+    
+    char sendBuffer[20];
+    scanf("%[^\n]%*c", sendBuffer);
     // int x=200;
+
+    while(strcmp(sendBuffer,"Bye")!=0){
     write(fd,sendBuffer,strlen(sendBuffer));
     char y[20]; 
     sleep(2);
     read(fd,y,sizeof(y));
     printf("Output of Clientt: %s\n",y);
+    scanf("%[^\n]%*c", sendBuffer);
+    }
+    
     return 0;
 }
