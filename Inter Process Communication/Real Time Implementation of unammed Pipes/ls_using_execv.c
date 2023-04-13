@@ -7,8 +7,11 @@
 #include<time.h>
 #include<unistd.h>
 
-int main()
-{
+
+//char *args[]={"./EXEC",NULL};
+// execv(args[0],args);
+
+int main(){
     int fd[2];
     pipe(fd);
     int ret=fork();
@@ -17,7 +20,8 @@ int main()
         dup2(fd[1],1);
         close(fd[0]);
         close(fd[1]);
-        system("ls -l");
+        char *argv1[]={"ls",NULL};
+        execve("/bin/ls",argv1, NULL);
         return 1;
     }
         int ret1=fork();
@@ -25,7 +29,8 @@ int main()
             dup2(fd[0],0);
             close(fd[0]);
             close(fd[1]);
-            system("sort");
+            char *argv2[]={"sort",NULL};
+            execve("/bin/sort",argv2, NULL);
             return 1;
         }
         
