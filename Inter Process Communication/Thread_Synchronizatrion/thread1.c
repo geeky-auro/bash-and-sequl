@@ -7,11 +7,11 @@ int sharedVariable=0;
 pthread_mutex_t s;
 void * increment(){
     // pthread_mutex_lock(&s);
-    for(int i = 0; i < 1000000; i++){
+    for(int i = 0; i < 10; i++){
         pthread_mutex_lock(&s);
         sharedVariable++;
-        pthread_mutex_unlock(&s);
         printf("%d \n",sharedVariable);
+         pthread_mutex_unlock(&s);
         
     }
     
